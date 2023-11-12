@@ -14,7 +14,7 @@ const InputTextbox = ({onChange}) => {
         <div className="max-w-md mx-auto mt-8">
             <label className="block text-sm font-medium text-gray-600">Enter Your Budget:</label>
             <input
-                type="integer"
+                type="text"
                 value={inputValue}
                 onChange={handleChange}
                 className="mt-1 p-2 border border-gray-300 rounded-md w-full"

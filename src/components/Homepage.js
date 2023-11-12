@@ -49,10 +49,10 @@ export default function Homepage() {
         setLoading(true);
 
         let itin = JSON.stringify({
-            city: incity,
-            days: indays,
-            budget: inbudget,
-            age: inage
+            City: incity,
+            Days: indays,
+            Budget: inbudget,
+            Age: inage
         });
         try {
             const response = await fetch(
