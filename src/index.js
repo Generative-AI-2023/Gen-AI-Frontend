@@ -21,7 +21,6 @@ root.render(
               <Routes>
                   <Route path="/" element={<Homepage/>}/>
                   <Route path="example" element={<Example/>}/>
-                  {/* <Route path="example" element={<CheckboxVerticalListGroup/>}/> */}
               </Routes>
           </BrowserRouter>
           
