@@ -3,7 +3,6 @@ import ActivityList from "./Activities";
 import DateRangePicker from "./DatePicker";
 import Dropdown from "./DropdownList";
 import AgeList from "./AgeRange";
-
 // import CheckboxVerticalListGroup from "./CheckboxList";
 
 export default function Homepage() {
@@ -14,34 +13,66 @@ export default function Homepage() {
         // Add your logic for handling the selected option
     }; 
     const [itinerary, setItinerary] = useState([])
+    const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        itineraryget()
-    }, [])
 
-    const itineraryget = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
 
-        const response = await fetch('https://holidai-backend-0c4977b424d6.herokuapp.com/i',
-            {
-                method: 'GET'
+        let itin = JSON.stringify({
+            city: "Halifax",
+            days: "2",
+            budget: "150",
+            person: {
+                name: "bob",
+                age: "73",
+                style: "adventurous"
             }
-        )
-        setItinerary(await response.text())
+        });
+        try {
+            const response = await fetch(
+                'https://holidai-backend-0c4977b424d6.herokuapp.com/i',
+                {
+                    method: 'POST',
+                    body: itin
+                }
+            )
+            setItinerary(await response.json())
+        }
+        catch (e) {
+            console.log("An Error Occured!")
+        }
+        setLoading(false);
 
     }
 
-    return(
-        <div >
+
+    return (
+        <div>
+            <form onSubmit={handleSubmit}>
             <h1 className="text-2xl font-semibold mb-4" >Select Age Range</h1>
             <AgeList options={options} onChange={handleOptionChange} />
             {itinerary}
-            
-            <ActivityList />
-            <DateRangePicker/>
-            <Dropdown/>
+                {/* <CheckboxVerticalListGroup />     */}
 
+                <ActivityList
+                />
+                <DateRangePicker />
+                <Dropdown />
+                <button
+                    type="submit"
+                >
+                    {loading ? 'Loading' : 'Click Here'}
+                </button>
+            </form>
+            {itinerary.map((data) => {
+                    return <li>{data}</li>
+                }
+                )}
+                {/* <CheckboxVerticalListGroup />     */}
         </div>
-        
+
     )
 }
 
