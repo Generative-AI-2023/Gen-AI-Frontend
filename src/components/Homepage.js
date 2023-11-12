@@ -3,6 +3,7 @@ import ActivityList from "./Activities";
 import DateRangePicker from "./DatePicker";
 import DropdownList from "./DropdownList";
 import AgeList from "./AgeRange";
+import DayList from "./DaysSelector";
 // import CheckboxVerticalListGroup from "./CheckboxList";
 
 export default function Homepage() {
@@ -53,19 +54,21 @@ export default function Homepage() {
             <form onSubmit={handleSubmit}>
             <h1 className="text-2xl font-semibold mb-4" >Select Age Range</h1>
             <AgeList options={options} onChange={handleOptionChange} />
-            {itinerary}
 
             
             <ActivityList />
-                <DateRangePicker />
+                {/* <DateRangePicker /> */}
+                <h1 className="text-2xl font-semibold mb-4">Length of Trip</h1>
+                <DayList/>
                 <h1 className="text-2xl font-semibold mb-4">Select Number of Daily Activities</h1>
                 <DropdownList />
                 <button
                     type="submit"
-                >
+                    >
                     {loading ? 'Loading' : 'Click Here'}
                 </button>
             </form>
+            {itinerary}
             {itinerary.map((data) => {
                 return <li>{data}</li>
             }
@@ -84,6 +87,10 @@ const ActivityState = () => {
         // Add more options as needed
     ]);
 
+    const handleOptionChange = (checkboxes) => {
+        console.log(`Selected option: ${checkboxes}`);
+    }; 
+
     return(
         <ActivityList setCheckboxes={setCheckboxes}/>
     )
@@ -95,6 +102,18 @@ const DateRange = () => {
 
     return(
         <><DateRangePicker startDate={startDate} /><DateRangePicker endDate={endDate} /></>
+    )
+}
+
+const DaysCount = () => {
+    const [selectedValue, setSelectedValue] = useState(null);
+    
+    const handleOptionChange = (selectedValue) => {
+        console.log(`Selected option: ${selectedValue}`);
+    }; 
+
+    return(
+        <DayList setSelectedValue={setSelectedValue}/>
     )
 }
 

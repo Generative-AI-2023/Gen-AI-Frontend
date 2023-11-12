@@ -1,26 +1,24 @@
-// DropdownList.js
 import { useState } from 'react';
 
-const DropdownList = () => {
-    const [selectedValue, setSelectedValue] = useState(null);
+const DayList = props => {
+    // const [selectedValue, setSelectedValue] = useState(null);
 
     const handleSelectChange = (event) => {
-        setSelectedValue(event.target.value);
-        console.log(`Selected option: ${selectedValue}`);
+        props.setSelectedValue(event.target.value);
         // Add your logic for handling the selected value
     };
 
-    const numbers = [1, 2, 3, 4, 5];
+    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
     return (
         <div className="inline-block relative">
             <select
                 onChange={handleSelectChange}
-                value={selectedValue}
+                value={props.selectedValue}
                 className="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-gray-500"
             >
                 <option value="" disabled>
-                    Number of Activities
+                    Days
                 </option>
                 {numbers.map((number) => (
                     <option key={number} value={number}>
@@ -41,4 +39,4 @@ const DropdownList = () => {
     );
 };
 
-export default DropdownList;
+export default DayList;

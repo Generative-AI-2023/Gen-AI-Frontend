@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ActivityList = props => {
+const ActivityList = () => {
     const [checkboxes, setCheckboxes] = useState([
         { id: 1, label: 'Adventure', checked: false },
         { id: 2, label: 'Restaurants', checked: false },
@@ -9,7 +9,7 @@ const ActivityList = props => {
     ]);
 
     const handleCheckboxChange = (id) => {
-        props.setCheckboxes((prevCheckboxes) =>
+        setCheckboxes((prevCheckboxes) =>
             prevCheckboxes.map((checkbox) =>
                 checkbox.id === id ? { ...checkbox, checked: !checkbox.checked } : checkbox
             )
