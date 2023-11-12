@@ -5,6 +5,8 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Header from './components/Header';
 import Example from './components/Example';
 import Homepage from './components/Homepage';
+import CheckboxVerticalListGroup from './components/CheckboxList';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -20,9 +22,12 @@ root.render(
               <Routes>
                   <Route path="/" element={<Homepage/>}/>
                   <Route path="example" element={<Example/>}/>
+                  {/* <Route path="example" element={<CheckboxVerticalListGroup/>}/> */}
               </Routes>
           </BrowserRouter>
+          
       </div>
+    
 
   </React.StrictMode>
 );
