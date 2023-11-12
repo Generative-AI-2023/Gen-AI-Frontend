@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import ActivityList from "./Activities";
 import CheckboxList from "./Checkboxes";
 import DateRangePicker from "./DatePicker";
+import Dropdown from "./DropdownList";
+// import CheckboxVerticalListGroup from "./CheckboxList";
 
 export default function Homepage() {
 
@@ -30,6 +32,8 @@ export default function Homepage() {
             
             <ActivityList />
             <DateRangePicker/>
+            <Dropdown/>
+
         </div>
         
     )

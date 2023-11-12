@@ -16,7 +16,7 @@ const DateRangePicker = () => {
 
     return (
         <div className="max-w-md mx-auto mt-8">
-            <h1 className="text-2xl font-semibold mb-4">Date Range Picker</h1>
+            <h1 className="text-2xl font-semibold mb-4">Select Dates of Trip</h1>
             <DatePicker
                 selected={startDate}
                 onChange={handleDateChange}
