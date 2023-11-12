@@ -20,7 +20,6 @@ const Citybox = ({ onChange }) => {
                 className="mt-1 p-2 border border-gray-300 rounded-md w-full"
                 placeholder="City"
             />
-            <p className="mt-2 text-sm text-gray-500">Entered Value: {inputValue}</p>
         </div>
     );
 };
