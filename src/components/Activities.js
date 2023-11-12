@@ -18,7 +18,7 @@ const ActivityList = props => {
 
     return (
         <div className="max-w-md mx-auto">
-            <h1 className="text-2xl font-semibold mb-4">Select the type of Activities</h1>
+            <h1 className="text-2xl font-semibold mb-4">Select the Type of Activities</h1>
             <div>
                 {checkboxes.map((checkbox) => (
                     <div key={checkbox.id} className="flex items-center mb-2">

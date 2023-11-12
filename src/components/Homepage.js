@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ActivityList from "./Activities";
 import DateRangePicker from "./DatePicker";
-import Dropdown from "./DropdownList";
+import DropdownList from "./DropdownList";
 import AgeList from "./AgeRange";
 // import CheckboxVerticalListGroup from "./CheckboxList";
 
@@ -54,12 +54,12 @@ export default function Homepage() {
             <h1 className="text-2xl font-semibold mb-4" >Select Age Range</h1>
             <AgeList options={options} onChange={handleOptionChange} />
             {itinerary}
-                {/* <CheckboxVerticalListGroup />     */}
 
-                <ActivityList
-                />
+            
+            <ActivityList />
                 <DateRangePicker />
-                <Dropdown />
+                <h1 className="text-2xl font-semibold mb-4">Select Number of Daily Activities</h1>
+                <DropdownList />
                 <button
                     type="submit"
                 >
@@ -67,10 +67,10 @@ export default function Homepage() {
                 </button>
             </form>
             {itinerary.map((data) => {
-                    return <li>{data}</li>
-                }
-                )}
-                {/* <CheckboxVerticalListGroup />     */}
+                return <li>{data}</li>
+            }
+            )}
+
         </div>
 
     )
