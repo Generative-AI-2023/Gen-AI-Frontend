@@ -1,4 +1,5 @@
 import Logo from "../img/logo.jpg"
+import Team from "../img/team.jpg"
 
 export default function About(){
     return(
@@ -13,7 +14,11 @@ export default function About(){
             The client will input information pertaining to their budget, location, and age and the AI will handle the rest.
             <br/>
             <br/>
-            This app takes away the pain of planning so the end user can have more time enjoying their vacation
+            This app takes away the pain of planning so the end user can spend more time enjoying their vacation
+            <br/>
+            <br/>
+            The team: Jasper, Duncan, Tori, and Andy
+            <img src={Team} className="mx-auto text-center h-64 w-100 rounded-lg" width="256" height="512" alt="Team"/>
         </div>
     )
 }
