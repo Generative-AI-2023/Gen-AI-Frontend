@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import ActivityList from "./Activities";
 import DateRangePicker from "./DatePicker";
-import DropdownList from "./DropdownList";
 import AgeList from "./AgeRange";
 import DayList from "./DaysSelector";
 import InputTextbox from "./textbox";
+
+import Loading from "./Loading";
 // import CheckboxVerticalListGroup from "./CheckboxList";
 
 export default function Homepage() {
     const options = ['Under 12', '18 - 25', '26 - 39', '40 - 55', '55+'];
-
+    var inage=('');
     const handleOptionChange = (selectedOption) => {
         console.log(`Selected option: ${selectedOption}`);
+        inage = selectedOption;
         // Add your logic for handling the selected option
     }; 
     var indays = ('');
@@ -33,21 +35,19 @@ export default function Homepage() {
 
     const [itinerary, setItinerary] = useState([])
     const [loading, setLoading] = useState(false);
+    const [doneLoading, setDoneLoading] = useState(false);
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setDoneLoading(false)
         setLoading(true);
 
         let itin = JSON.stringify({
             city: "Halifax",
             days: indays,
             budget: inbudget,
-            person: {
-                name: "bob",
-                age: "73",
-                style: "adventurous"
-            }
+            age: inage
         });
         try {
             const response = await fetch(
@@ -63,12 +63,13 @@ export default function Homepage() {
             console.log("An Error Occured!")
         }
         setLoading(false);
+        setDoneLoading(true)
 
     }
 
 
     return (
-        <div>
+        <div className="text-center">
             <form onSubmit={handleSubmit}>
             <h1 className="text-2xl font-semibold mb-4" >Select Age Range</h1>
             <AgeList options={options} onChange={handleOptionChange} />
@@ -82,17 +83,20 @@ export default function Homepage() {
                 {/* <DropdownList /> */}
                 <InputTextbox onChange={budgetChange}/>
                 <button
+                    className="mx-auto text-center text-2xl font-semibold mb-4 bg-main rounded-lg"
                     type="submit"
-                    >
-                    {loading ? 'Loading' : 'Click Here'}
+                >
+                    {loading ? <Loading /> : 'Click Here'}
                 </button>
+
             </form>
-            {itinerary}
+            <div className="text-center">
+            {(doneLoading) ? <div className="text-center text-2xl font-semibold mb-4">My Itinerary: </div>: ""}
             {itinerary.map((data) => {
-                return <li>{data}</li>
+                return <div className="bg-secondary  mx-12">{data}<br /></div>
             }
             )}
-
+            </div>
         </div>
 
     )
@@ -120,7 +124,7 @@ const DateRange = () => {
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
 
-    return(
+    return (
         <><DateRangePicker startDate={startDate} /><DateRangePicker endDate={endDate} /></>
     )
 }
