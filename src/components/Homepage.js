@@ -79,8 +79,6 @@ export default function Homepage() {
                 {/* <DateRangePicker /> */}
                 <h1 className="text-2xl font-semibold mb-4">Length of Trip</h1>
                 <DayList onStateChange={handleSelectChange}/>
-                <h1 className="text-2xl font-semibold mb-4">Select Number of Daily Activities</h1>
-                {/* <DropdownList /> */}
                 <InputTextbox onChange={budgetChange}/>
                 <button
                     className="mx-auto text-center text-2xl font-semibold mb-4 bg-main rounded-lg"

@@ -12,7 +12,7 @@ const AgeList = ({ options, onChange }) => {
     return (
         <div style={{ justifyContent: 'center' }}>
             {options.map((option) => (
-                <div key={option} className="flex items-center mb-2">
+                <div key={option} className="items-center mb-2">
                     <input
                         type="radio"
                         id={option}
