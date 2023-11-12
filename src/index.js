@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Header from './components/Header';
-import Example from './components/Example';
+import About from './components/About';
 import Homepage from './components/Homepage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -20,7 +20,7 @@ root.render(
           <Header/>
               <Routes>
                   <Route path="/" element={<Homepage/>}/>
-                  <Route path="example" element={<Example/>}/>
+                  <Route path="about" element={<About/>}/>
               </Routes>
           </BrowserRouter>
           
