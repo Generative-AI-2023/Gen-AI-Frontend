@@ -4,13 +4,14 @@ import DateRangePicker from "./DatePicker";
 import AgeList from "./AgeRange";
 import DayList from "./DaysSelector";
 import InputTextbox from "./textbox";
-
+import Citybox from "./city";
 import Loading from "./Loading";
 // import CheckboxVerticalListGroup from "./CheckboxList";
 
 export default function Homepage() {
     const options = ['Under 12', '18 - 25', '26 - 39', '40 - 55', '55+'];
     var inage=('');
+    var incity;
     const handleOptionChange = (selectedOption) => {
         console.log(`Selected option: ${selectedOption}`);
         inage = selectedOption;
@@ -26,6 +27,10 @@ export default function Homepage() {
     const budgetChange = (budget) => {
         console.log(`Selected option: ${budget}`);
         inbudget = budget;
+    }; 
+    const cityChange = (city) => {
+        console.log(`Selected option: ${city}`);
+        incity = city;
     }; 
 
     const activities = (list) => {
@@ -44,7 +49,7 @@ export default function Homepage() {
         setLoading(true);
 
         let itin = JSON.stringify({
-            city: "Halifax",
+            city: incity,
             days: indays,
             budget: inbudget,
             age: inage
@@ -71,6 +76,7 @@ export default function Homepage() {
     return (
         <div className="text-center">
             <form onSubmit={handleSubmit}>
+                <Citybox onChange={cityChange}/>
             <h1 className="text-2xl font-semibold mb-4" >Select Age Range</h1>
             <AgeList options={options} onChange={handleOptionChange} />
 
