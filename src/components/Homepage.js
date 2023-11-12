@@ -4,6 +4,7 @@ import DateRangePicker from "./DatePicker";
 import DropdownList from "./DropdownList";
 import AgeList from "./AgeRange";
 import DayList from "./DaysSelector";
+import InputTextbox from "./textbox";
 // import CheckboxVerticalListGroup from "./CheckboxList";
 
 export default function Homepage() {
@@ -13,6 +14,23 @@ export default function Homepage() {
         console.log(`Selected option: ${selectedOption}`);
         // Add your logic for handling the selected option
     }; 
+    var indays = ('');
+    var inbudget = ('');
+    var inlist = ('');
+    const handleSelectChange = (selectedOption) => {
+        console.log(`Selected option: ${selectedOption}`);
+        indays = selectedOption;
+    }; 
+    const budgetChange = (budget) => {
+        console.log(`Selected option: ${budget}`);
+        inbudget = budget;
+    }; 
+
+    const activities = (list) => {
+        console.log(`Selected option: ${list}`);
+        inlist = list;
+    }; 
+
     const [itinerary, setItinerary] = useState([])
     const [loading, setLoading] = useState(false);
 
@@ -23,8 +41,8 @@ export default function Homepage() {
 
         let itin = JSON.stringify({
             city: "Halifax",
-            days: "2",
-            budget: "150",
+            days: indays,
+            budget: inbudget,
             person: {
                 name: "bob",
                 age: "73",
@@ -56,12 +74,13 @@ export default function Homepage() {
             <AgeList options={options} onChange={handleOptionChange} />
 
             
-            <ActivityList />
+            {/* <ActivityList onChange={activities}/> */}
                 {/* <DateRangePicker /> */}
                 <h1 className="text-2xl font-semibold mb-4">Length of Trip</h1>
-                <DayList/>
+                <DayList onStateChange={handleSelectChange}/>
                 <h1 className="text-2xl font-semibold mb-4">Select Number of Daily Activities</h1>
-                <DropdownList />
+                {/* <DropdownList /> */}
+                <InputTextbox onChange={budgetChange}/>
                 <button
                     type="submit"
                     >
@@ -87,8 +106,9 @@ const ActivityState = () => {
         // Add more options as needed
     ]);
 
-    const handleOptionChange = (checkboxes) => {
-        console.log(`Selected option: ${checkboxes}`);
+    const handleOptionChange = (listed) => {
+        // console.log(`Selected option: ${checkboxes}`);
+        setCheckboxes(listed);
     }; 
 
     return(
@@ -108,12 +128,14 @@ const DateRange = () => {
 const DaysCount = () => {
     const [selectedValue, setSelectedValue] = useState(null);
     
-    const handleOptionChange = (selectedValue) => {
-        console.log(`Selected option: ${selectedValue}`);
+    const handleOptionChange = (newValue) => {
+        setSelectedValue(newValue)
+        // console.log(`Selected option: ${selectedValue}`);
     }; 
 
     return(
-        <DayList setSelectedValue={setSelectedValue}/>
+
+        <DayList onStateChange={handleOptionChange}/>
     )
 }
 

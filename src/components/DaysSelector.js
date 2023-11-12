@@ -1,20 +1,25 @@
 import { useState } from 'react';
 
-const DayList = props => {
-    // const [selectedValue, setSelectedValue] = useState(null);
+const DayList = ({onStateChange }) => {
+    const [selectedValue, setSelectedValue] = useState(null);
 
     const handleSelectChange = (event) => {
-        props.setSelectedValue(event.target.value);
-        // Add your logic for handling the selected value
+        const newValue = event.target.value;
+        // setSelectedValue(event)
+        setSelectedValue(newValue);
+        // Pass the state to the parent component
+        onStateChange(newValue);
     };
 
     const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
     return (
+
         <div className="inline-block relative">
+            {/* <input type="text" value={selectedValue} onStateChange={() => handleSelectChange} /> */}
             <select
                 onChange={handleSelectChange}
-                value={props.selectedValue}
+                value={selectedValue}
                 className="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-gray-500"
             >
                 <option value="" disabled>
