@@ -5,7 +5,6 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Header from './components/Header';
 import Example from './components/Example';
 import Homepage from './components/Homepage';
-import CheckboxVerticalListGroup from './components/CheckboxList';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
